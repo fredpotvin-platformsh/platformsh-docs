@@ -8,24 +8,23 @@ description: |
 
 {{< description >}}
 
-## Organization settings
+## Manage your organization settings
 
 As an organization owner, you can manage the basic settings for your organization such as its name and URL.
-
 
 {{< codetabs >}}
 
 ---
-title=In the console
+title=Using the Console
 file=none
 highlight=false
 ---
 
 1. Navigate to the organization you want to manage (or a project in it).
-1. Open the user menu (your name or profile picture).
-1. Click **Settings**.
-1. Click **Edit** to edit the label or click in the **Organization URL** field to edit the URL.
-1. Click **Save**.
+2. Open the user menu (your name or profile picture).
+3. Click **Settings**.
+4. Click **Edit** to edit the label or click in the **Organization URL** field to edit the URL.
+5. Click **Save**.
 
 <--->
 ---
@@ -34,22 +33,36 @@ file=none
 highlight=false
 ---
 
-Say you want to set the organization label to `Great Org` and its URL to `greatest`:
+Say you want to change the organization named `acme-corp` with the label to `Great Org` and its URL to `greatest`:
 
 ```bash
-platform organization:info label "Great Org" name greatest
+platform organization:info --org acme label "Great Org" name greatest
 ```
 
-To verify the changes, run `platform organization:info`.
+To verify the changes, run `platform organization:info --org greatest`.
 
 {{< /codetabs >}}
 
-## Organization billing
+## Manage your organization billing
 
 As an organization owner or an organization user with the **manage billing** permission,
 you can access and download invoices and edit billing information such as the stored credit card and billing address.
 
-## Organization permissions
+{{< codetabs >}}
+
+---
+title=Using the Console
+file=none
+highlight=false
+---
+
+1. Navigate to the organization you want to manage (or a project in it).
+2. Open the user menu (your name or profile picture).
+3. Click **Billing**.
+
+{{< /codetabs >}}
+
+## Manage your organization users
 
 As an organization owner or an organization user with the **manage users** permission,
 you can invite other users to your organization and grant them the following permissions:
@@ -71,6 +84,20 @@ A user with the **manage users** (`members`) permission can add, edit, or remove
 
 {{< /note >}}
 
+{{< codetabs >}}
+
+---
+title=Using the Console
+file=none
+highlight=false
+---
+
+1. Navigate to the organization you want to manage (or a project in it).
+2. Open the user menu (your name or profile picture).
+3. Click **Users**.
+
+{{< /codetabs >}}
+
 Users who are a part of an organization can see all projects in that organization at the organization's URL,
 which takes the form `https://console.platform.sh/<ORGANIZATION_NAME>`.
 
@@ -78,6 +105,73 @@ They can access only projects where they're an admin or have permissions for at 
 To see all projects you have access to, from the main console page
 click **All projects&nbsp;<span aria-label="and then">></span> All projects**.
 For more on access control for projects, see [user administration](./users.md).
+
+## Create a new organization
+
+As a Platform.sh user, when you create a new project, if you do not have an organization, one will be created for you automatically.
+
+However, you can still create a new organization with a different payment method and billing address, and organize your projects the way you want.
+
+{{< codetabs >}}
+
+---
+title=Using the Console
+file=none
+highlight=false
+---
+
+1. Navigate to organization menu on the top left of the page.
+2. Click **Create a new organization**.
+4. Enter the required information (label, URL, country).
+5. Click **Save**.
+
+<--->
+---
+title=Using the CLI
+file=none
+highlight=false
+---
+
+Say you want to create an organization with the label `Acme Corp` and the URL `acme`:
+
+```bash
+platform organization:create --label "Acme" --name acme
+```
+
+To verify the changes, run `platform organization:info`.
+
+{{< /codetabs >}}
+
+## Delete an existing organization
+
+As an organization owner, and assuming that your organization does not own any remaining project and does not owe any outstanding invoices, you can delete the organization.
+
+{{< codetabs >}}
+
+---
+title=Using the Console
+file=none
+highlight=false
+---
+
+1. Navigate to organization menu on the top left of the page.
+2. Select the organization you want to delete.
+3. Click **Delete the organization**.
+
+<--->
+---
+title=Using the CLI
+file=none
+highlight=false
+---
+
+Say you want to delete the organization `acme`:
+
+```bash
+platform organization:delete --org acme
+```
+
+{{< /codetabs >}}
 
 ## Manage organizations with the CLI
 
