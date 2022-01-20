@@ -21,10 +21,10 @@ highlight=false
 ---
 
 1. Navigate to the organization you want to manage (or a project in it).
-2. Open the user menu (your name or profile picture).
-3. Click **Settings**.
-4. Click **Edit** to edit the label or click in the **Organization URL** field to edit the URL.
-5. Click **Save**.
+1. Open the user menu (your name or profile picture).
+1. Click **Settings**.
+1. Click **Edit** to edit the label or click in the **Organization URL** field to edit the URL.
+1. Click **Save**.
 
 <--->
 ---
@@ -57,8 +57,8 @@ highlight=false
 ---
 
 1. Navigate to the organization you want to manage (or a project in it).
-2. Open the user menu (your name or profile picture).
-3. Click **Billing**.
+1. Open the user menu (your name or profile picture).
+1. Click **Billing**.
 
 {{< /codetabs >}}
 
@@ -93,8 +93,8 @@ highlight=false
 ---
 
 1. Navigate to the organization you want to manage (or a project in it).
-2. Open the user menu (your name or profile picture).
-3. Click **Users**.
+1. Open the user menu (your name or profile picture).
+1. Click **Users**.
 
 <--->
 ---
@@ -144,9 +144,9 @@ highlight=false
 ---
 
 1. Navigate to organization menu on the top left of the page.
-2. Click **Create a new organization**.
-4. Enter the required information (label, URL, country).
-5. Click **Save**.
+1. Click **Create a new organization**.
+1. Enter the required information (label, URL, country).
+1. Click **Save**.
 
 <--->
 ---
@@ -178,8 +178,8 @@ highlight=false
 ---
 
 1. Navigate to organization menu on the top left of the page.
-2. Select the organization you want to delete.
-3. Click **Delete the organization**.
+1. Select the organization you want to delete.
+1. Click **Delete the organization**.
 
 <--->
 ---
