@@ -96,6 +96,29 @@ highlight=false
 2. Open the user menu (your name or profile picture).
 3. Click **Users**.
 
+<--->
+---
+title=Using the CLI
+file=none
+highlight=false
+---
+
+Say you want to invite `alice@example.com` with the **Manage users**, **Billing**, **Plans** and **Projects create** permissions to the `acme` organization.
+
+```bash
+platform organization:user:add alice@example.com --org=acme --permission=members,billing,plans,projects:create
+```
+
+After inviting `alice@example.com`, Alice will receive an invitation email asking to confirm her details and optionally, register for a Platform.sh account.
+
+To update Alice's permissions in your organization, run:
+
+```bash
+platform organization:user:update alice@example.com --org=acme --permission=billing
+```
+
+This command would remove all previously granted permissions from Alice, and only grant the **Billing** permission.
+
 {{< /codetabs >}}
 
 Users who are a part of an organization can see all projects in that organization at the organization's URL,
@@ -172,42 +195,6 @@ platform organization:delete --org acme
 ```
 
 {{< /codetabs >}}
-
-## Manage organizations with the CLI
-
-You can use the Platform.sh command line interface to manage your organizations.
-
-Available commands (get the full list with 'platform list organization')
-
-```txt
-Available commands for the "organization" namespace:
-      organization:info              View or change organization details
-      organization:list              List organizations
-      organization:subscription:list List subscriptions within an organization
-      organization:billing:address   View or change an organization's billing address
-      organization:billing:profile   View or change an organization's billing profile
-      organization:user:add          Invite a user to an organization
-      organization:user:delete       Remove a user from an organization
-      organization:user:get          View an organization user
-      organization:user:list         List organization users
-      organization:user:update       Update an organization user
-```
-
-For example, the following command would invite `alice@example.com` with the **Manage users**, **Billing**, **Plans** and **Projects create** permissions to the `acme-corp` organization.
-
-```bash
-platform organization:user:add alice@example.com --org=acme-corp --permission=members,billing,plans,projects:create
-```
-
-After inviting `alice@example.com`, Alice will receive an invitation email asking to confirm her details and optionally, register for a Platform.sh account.
-
-To update Alice's permissions in your organization, run:
-
-```bash
-platform organization:user:update alice@example.com --org=acme-corp --permission=billing
-```
-
-This command would remove all previously granted permissions from Alice, and only grant the **Billing** permission.
 
 ## Transfer project ownership
 
