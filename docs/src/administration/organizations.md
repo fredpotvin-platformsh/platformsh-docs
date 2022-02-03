@@ -33,19 +33,23 @@ file=none
 highlight=false
 ---
 
-Say you want to change the organization named `acme-corp` with the label to `Great Org` and its URL to `greatest`:
+To change the name and label of the `Acme` organization, run:
 
 ```bash
-platform organization:info --org acme label "Great Org" name greatest
+platform organization:info --org acme label "Acme Corp" name acme-corp
 ```
 
-To verify the changes, run `platform organization:info --org greatest`.
+To verify the changes, run:
+
+```bash
+platform organization:info --org acme-corp
+```
 
 {{< /codetabs >}}
 
 ## Manage your organization billing
 
-As an organization owner or an organization user with the **manage billing** permission,
+As an organization owner, or an organization user with the **Manage billing** permission,
 you can access and download invoices and edit billing information such as the stored credit card and billing address.
 
 {{< codetabs >}}
@@ -57,14 +61,14 @@ highlight=false
 ---
 
 1. Navigate to the organization you want to manage (or a project in it).
-1. Open the user menu (your name or profile picture).
+1. Open the user menu (your name or profile picture) on the top right of the screen.
 1. Click **Billing**.
 
 {{< /codetabs >}}
 
 ## Manage your organization users
 
-As an organization owner or an organization user with the **manage users** permission,
+As an organization owner, or an organization user with the **Manage users** permission,
 you can invite other users to your organization and grant them the following permissions:
 
 * **Manage plans** (`plans`):
@@ -80,7 +84,7 @@ you can invite other users to your organization and grant them the following per
 
 {{< note theme="warning" >}}
 
-A user with the **manage users** (`members`) permission can add, edit, or remove _any_ user's permissions.
+A user with the **Manage users** (`members`) permission can add, edit, or remove _any_ user's permissions.
 
 {{< /note >}}
 
@@ -93,7 +97,7 @@ highlight=false
 ---
 
 1. Navigate to the organization you want to manage (or a project in it).
-1. Open the user menu (your name or profile picture).
+1. Open the user menu (your name or profile picture) on the top right of the screen.
 1. Click **Users**.
 
 <--->
@@ -124,10 +128,9 @@ This command would remove all previously granted permissions from Alice, and onl
 Users who are a part of an organization can see all projects in that organization at the organization's URL,
 which takes the form `https://console.platform.sh/<ORGANIZATION_NAME>`.
 
-They can access only projects where they're an admin or have permissions for at least one environment type.
-To see all projects you have access to, from the main console page
-click **All projects&nbsp;<span aria-label="and then">></span> All projects**.
-For more on access control for projects, see [user administration](./users.md).
+However, they can only access the projects where they have been explicit invited to by a project admin.
+
+To see all the projects that you have access to, go to the main console page at `https://console.platform.sh`, or click the **All projects** link on the top left of the screen. For more information on access control for projects, see [user administration](./users.md).
 
 ## Create a new organization
 
@@ -155,19 +158,25 @@ file=none
 highlight=false
 ---
 
-Say you want to create an organization with the label `Acme Corp` and the URL `acme`:
+To create an organization with the label `Acme` and the URL `acme`, run:
 
 ```bash
-platform organization:create --label "Acme" --name acme
+platform organization:create --label "Acme" --name acme --country "United States"
 ```
 
-To verify the changes, run `platform organization:info`.
+To verify the changes, run:
+
+```bash
+platform organization:info --org acme
+```
 
 {{< /codetabs >}}
 
 ## Delete an existing organization
 
-As an organization owner, and assuming that your organization does not own any remaining project and does not owe any outstanding invoices, you can delete the organization.
+As an organization owner, you can delete your own organization.
+
+Note that if your organization owns projects, or owes remaining invoices, you can not delete it, and you need to contact our Support. 
 
 {{< codetabs >}}
 
@@ -188,7 +197,7 @@ file=none
 highlight=false
 ---
 
-Say you want to delete the organization `acme`:
+To delete the organization `acme`:
 
 ```bash
 platform organization:delete --org acme
