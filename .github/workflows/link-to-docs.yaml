@@ -1,4 +1,4 @@
-name: Link to docs
+name: Links
 on:
   pull_request:
     types: [opened,reopened]
@@ -39,6 +39,7 @@ jobs:
                 sleep 30
 
                 ENV_URL=$(curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_SHA  | jq -r '.[0].target_url')
+                ENV_URL=${ENV_URL/http:/https:}
                 COMMIT_STATUS=$(curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_SHA  | jq -r '.[0].state')
                 
                 echo "The Platform.sh environment is:"
@@ -135,3 +136,14 @@ jobs:
               repo: context.repo.repo,
               body: `Your Platform.sh environment has successfully deployed. :rocket:\n\nSee the site: ${process.env.ENV_URL}`
             })
+
+  check-links:
+    runs-on: ubuntu-latest
+    name: Check links
+    needs: get_url
+    if: needs.get_url.outputs.commit_status == 'success'
+    steps:
+      - name: Check links with linkcheck
+        uses: filiph/linkcheck@2.0.19
+        with:
+          arguments: ${{ needs.get_url.outputs.env_url }}
